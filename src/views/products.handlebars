@@ -1,0 +1,46 @@
+<h2>Productos</h2>
+
+<div>
+  <form method="get" action="/products">
+    <input type="number" name="limit" placeholder="limit" value="{{limit}}" min="1" />
+    <input type="number" name="page" placeholder="page" value="{{page}}" min="1" />
+    <select name="sort">
+      <option value="" {{#unless sort}}selected{{/unless}}>sin orden</option>
+      <option value="asc" {{#if (eq sort "asc")}}selected{{/if}}>precio asc</option>
+      <option value="desc" {{#if (eq sort "desc")}}selected{{/if}}>precio desc</option>
+    </select>
+    <input type="text" name="query" placeholder="" value="{{query}}" />
+    <button>Aplicar</button>
+  </form>
+</div>
+
+<div style="margin:10px 0;">
+  Carrito actual: <span id="currentCartId"></span>
+  <input id="cartInput" placeholder="ID">
+  <button onclick="window.setCartId(document.getElementById('cartInput').value)">Guardar Carrito</button>
+  <a id="verCarrito" href="#" target="_blank">Ver carrito</a>
+</div>
+
+<ul id="listado">
+  {{#each products}}
+    <li>
+      <strong>{{this.title}}</strong> - ${{this.price}} - {{this.category}} - {{#if this.status}}Disponible{{else}}No disponible{{/if}}
+      | <a href="/products/{{this._id}}">Ver detalle</a>
+      | <button class="addCartBtn" data-pid="{{this._id}}">Agregar al carrito</button>
+    </li>
+  {{/each}}
+</ul>
+
+<div>
+  <p>Página {{page}} de {{totalPages}}</p>
+  <div>
+    {{#if (gt page 1)}}
+      <a href="/products?limit={{limit}}&page={{dec page}}&sort={{sort}}&query={{query}}">Anterior</a>
+    {{/if}}
+    {{#if (lt page totalPages)}}
+      <a href="/products?limit={{limit}}&page={{inc page}}&sort={{sort}}&query={{query}}">Siguiente</a>
+    {{/if}}
+  </div>
+</div>
+
+<script src="/js/shop.js"></script>

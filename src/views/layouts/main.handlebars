@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}} COMPRAS</title>
+</head>
+<body>
+  <h1>Compras</h1>
+  <nav>
+    <a href="/">Inicio</a> 
+    <a href="/products">Productos</a> 
+    <a href="/realtimeproducts">Panel</a>
+  </nav>
+  
+
+  {{{body}}}
+
+  <script>
+    
+    (function(){
+      const key = 'cartId';
+      window.getCartId = function(){ return localStorage.getItem(key); }
+      window.setCartId = function(v){ localStorage.setItem(key, v); alert('Cart ID guardado: ' + v); }
+    })();
+  </script>
+</body>
+</html>

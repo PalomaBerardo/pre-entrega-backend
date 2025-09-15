@@ -1,0 +1,14 @@
+<h2>{{product.title}}</h2>
+<p>Precio: ${{product.price}}</p>
+<p>Categoría: {{product.category}}</p>
+<p>Estado: {{#if product.status}}Disponible{{else}}No disponible{{/if}}</p>
+<p>{{product.description}}</p>
+
+<div>
+  <input id="cartInput" placeholder="cartId (si no lo guardaste)">
+  <button onclick="window.setCartId(document.getElementById('cartInput').value)">Guardar</button>
+</div>
+
+<button id="agregarBtn" data-pid="{{product._id}}">Agregar al carrito</button>
+
+<script src="/js/shop.js"></script>

@@ -1,0 +1,19 @@
+<h2>Tiempo real</h2>
+
+<form id="createForm">
+  <input name="title" placeholder="Titulo">
+  <input name="price" placeholder="Precio">
+  <input name="category" placeholder="Categoria">
+  <input name="description" placeholder="Descripcion">
+  <button>Agregar</button>
+</form>
+
+<form id="deleteForm">
+  <input name="id" placeholder="ID a borrar">
+  <button>Eliminar</button>
+</form>
+
+<ul id="productsList"></ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtime.js"></script>

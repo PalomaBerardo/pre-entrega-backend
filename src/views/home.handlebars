@@ -1,0 +1,14 @@
+<h2>Home</h2>
+<p>Últimos productos </p>
+{{#if products.length}}
+<ul>
+  {{#each products}}
+    <li>
+      <a href="/products/{{this._id}}">{{this.title}}</a>
+      - ${{this.price}} - {{this.category}}
+    </li>
+  {{/each}}
+</ul>
+{{else}}
+<p>No hay productos</p>
+{{/if}}
